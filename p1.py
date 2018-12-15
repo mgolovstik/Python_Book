@@ -1,4 +1,4 @@
-Python 3.6.6 (default, Sep 12 2018, 18:26:19) 
+Python 3.6.6 (default, Sep 12 2018, 18:26:19)  
 [GCC 8.0.1 20180414 (experimental) [trunk revision 259383]] on linux
 Type "copyright", "credits" or "license()" for more information.
 >>> 12 + 45
