@@ -16,7 +16,7 @@ class ball:
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
         self.hit_bottom = False
-        self.score = 664
+        self.score = 0
 
     def rand_ig(self):
         self.i = random.randint(1, 5)
@@ -51,6 +51,16 @@ class ball:
         if pos[2] >= self.canvas_width:
             self.x = -self.i
 
+    def zamena(self):
+        if pos[1] <= 0:
+            self.y = self.i
+        if pos[3] >= self.canvas_height:
+            self.y = -self.i
+        if pos[0] <= 0:
+            self.x = self.i
+        if pos[2] >= self.canvas_width:
+            self.x = -self.i
+
 class paddle:
     def turn_left(self, evt):
         self.x = -4
@@ -74,7 +84,7 @@ class paddle:
             self.x = 0
         
 tk = Tk()
-tk.title("Игра")
+tk.title("Прыг - скок")
 tk.resizable(0, 0)
 tk.wm_attributes("-topmost", 1)
 canvas = Canvas(tk, width = 500, height = 400, bd = 0, highlightthickness = 0)
@@ -95,6 +105,20 @@ while 1:
     tk.update_idletasks()
     tk.update()
     time.sleep(0.01)
+    
+if ball.score == 666:
+    ball.battom = False
+    ball.zamena()
+    while 1:
+        if ball.hit_bottom == False:
+            ball.draw()
+            paddle.draw()
+        else:
+            break
+        tk.update_idletasks()
+        tk.update()
+        time.sleep(0.01)
+    
 time.sleep(1.00)
 canvas.create_text(250, 200, text = 'Конец игры.', font = ('Times', 30))
 #canvas.create_text(250, 200, 'Конец игры.', font = ('Times', 30))
